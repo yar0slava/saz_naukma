@@ -1,4 +1,4 @@
-package com.kma.saz_naukma.database.entity;
+package com.kma.saz_naukma.core.database.entity;
 
 import lombok.Getter;
 import lombok.Setter;

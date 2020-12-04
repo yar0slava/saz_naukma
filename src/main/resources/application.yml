@@ -1,21 +1,41 @@
+#spring:
+#  data:
+#    mongodb:
+#      database: ukma_db
+#      port: 27017
+#      host: localhost
+
 spring:
-  jpa:
-    show-sql: true
-    database: POSTGRESQL
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        format_sql: true
-        use_sql_comments: true
-        show_sql: true
-  #        generate_statistics: true
-  datasource:
-    platform: postgres
-    url: jdbc:postgresql://localhost:5432/ukma_db
-    username: postgres
-    password: postgres
-    driverClassName: org.postgresql.Driver
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  profiles:
+    active: dev
+---
+spring:
+  data:
+    profiles: dev
+    mongodb:
+      url: mongodb://localhost:27017/ukma_db
+
+#  jpa:
+#    show-sql: true
+#    database: POSTGRESQL
+#    hibernate:
+#      ddl-auto: update
+#    properties:
+#      hibernate:
+#        format_sql: true
+#        use_sql_comments: true
+#        show_sql: true
+#  #        generate_statistics: true
+#  datasource:
+#    platform: postgres
+#    url: jdbc:postgresql://localhost:5432/ukma_db
+#    username: postgres
+#    password: postgres
+#    driverClassName: org.postgresql.Driver
+
 #logging:
 #  level:
 #    org:
