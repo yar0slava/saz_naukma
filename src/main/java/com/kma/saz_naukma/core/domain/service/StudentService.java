@@ -5,9 +5,14 @@ import com.kma.saz_naukma.core.domain.model.Student;
 import com.kma.saz_naukma.core.mapper.StudentMapper;
 import javassist.NotFoundException;
 import org.springframework.stereotype.Service;
-import java.util.Optional;
 
-//@Service
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
+@Service
 public class StudentService {
 
     private final StudentRepository studentRepository;
@@ -18,8 +23,19 @@ public class StudentService {
         this.studentMapper = stusentMapper;
     }
 
-    public Student getStudent(Long id) throws NotFoundException{
-        Optional<Student> student = studentRepository.findById(id).map(studentMapper::toModel);
+    public Student getStudentById(Long id) throws NotFoundException{
+        Optional<Student> student = studentRepository.getById(id).map(studentMapper::toModel);
         return student.orElseThrow(() -> new NotFoundException(String.format("Student not found with id %s",id)));
+    }
+
+    public List<Student> getAll() {
+        return StreamSupport.stream(studentRepository.findAll().spliterator(), false)
+                .map(studentMapper::toModel)
+                .collect(Collectors.toList());
+    }
+
+    public Student getByEmail(String studentEmail) throws NotFoundException{
+        Optional<Student> student = studentRepository.getByEmail(studentEmail).map(studentMapper::toModel);
+        return student.orElseThrow(() -> new NotFoundException(String.format("Student not found with email %s",studentEmail)));
     }
 }

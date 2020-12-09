@@ -12,6 +12,13 @@ import java.util.List;
 @RequestMapping("/api/disciplines")
 public class DisciplineController {
 
+    // TODO;
+    //  discipline by id;
+    //  discipline update;
+    //  discipline add;
+    //  discipline filtering
+    //  discipline pagination
+
     private final DisciplineFacade disciplineFacade;
 
     public DisciplineController(DisciplineFacade disciplineFacade){

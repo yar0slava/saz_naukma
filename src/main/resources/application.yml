@@ -5,18 +5,18 @@
 #      port: 27017
 #      host: localhost
 
-spring:
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
-  profiles:
-    active: dev
----
-spring:
-  data:
-    profiles: dev
-    mongodb:
-      url: mongodb://localhost:27017/ukma_db
+#spring:
+#  autoconfigure:
+#    exclude:
+#      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+#  profiles:
+#    active: dev
+#---
+#spring:
+#  data:
+#    profiles: dev
+#    mongodb:
+#      url: mongodb://localhost:27017/ukma_db
 
 #  jpa:
 #    show-sql: true

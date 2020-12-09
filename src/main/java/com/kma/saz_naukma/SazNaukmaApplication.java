@@ -1,13 +1,32 @@
 package com.kma.saz_naukma;
 
+import com.kma.saz_naukma.core.database.repository.DisciplineRepository;
+import com.kma.saz_naukma.core.database.repository.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
+@EnableMongoRepositories(basePackageClasses = DisciplineRepository.class)
+@EnableJpaRepositories(basePackageClasses = StudentRepository.class)
 @SpringBootApplication
-public class SazNaukmaApplication {
+public class SazNaukmaApplication implements CommandLineRunner {
+
+	@Autowired
+	private DisciplineRepository disciplineRepository;
+
+	@Autowired
+	private StudentRepository studentRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SazNaukmaApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+
 	}
 
 //	@Bean

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
-//@Component
+@Component
 public class StudentMapper {
 
     private final ModelMapper mapper;
