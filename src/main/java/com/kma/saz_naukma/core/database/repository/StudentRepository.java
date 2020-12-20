@@ -14,4 +14,6 @@ public interface StudentRepository extends PagingAndSortingRepository<StudentEnt
     Iterable<StudentEntity> findAll();
 
     Iterable<StudentEntity> findAllById(Iterable<Long> ids);
+
+
 }

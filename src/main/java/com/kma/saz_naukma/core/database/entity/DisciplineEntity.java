@@ -14,25 +14,31 @@ import java.util.List;
 @Document(collection = "discipline")
 public class DisciplineEntity {
     @Id
-    private String id;
-
-
+    private String id;  //?
     private Long code;
     private String annotation;
-    private Integer approvedGroupsAmount;
-    private String creditType;
-    private Double creditsAmount;
-    private String department;
+
     private Integer enrolledStudentsAmount;
-    private String faculty;
-    private Double hoursPerWeek;
-    private String lector;
-    private String level;
+    private Integer approvedGroupsAmount;
     private Integer maxGroups;
     private Integer maxStudInGroup;
     private Integer minStudInGroup;
     private Integer remainingPlacesAmount;
-    private String semester;
-    private String studyingYear;
+    private Double hoursPerWeek;
+//    private String creditType;
+//    private String department;
+//    private String semester;
+
+    private String name;
+    private String lector;
+    private String studyingYear;    //навч рік
+    private String level;
+    private Integer creditsAmount;
+    private String yearOfStudying;  // курс
+    private String recommendation;
+    private String faculty;
+    private String specialization;
+    private String enrollmentType;
+
     private List<Integer> studentsIDs;
 }

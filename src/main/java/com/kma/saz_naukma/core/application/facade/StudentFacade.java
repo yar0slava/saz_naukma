@@ -1,5 +1,6 @@
 package com.kma.saz_naukma.core.application.facade;
 
+import com.kma.saz_naukma.core.application.dto.GetStudentsDto;
 import com.kma.saz_naukma.core.application.dto.StudentDto;
 import com.kma.saz_naukma.core.domain.model.Student;
 import com.kma.saz_naukma.core.domain.service.StudentService;
@@ -20,19 +21,30 @@ public class StudentFacade {
         this.studentService = studentService;
     }
 
+    public List<StudentDto> getAll(List<Long> ids) {
+        return studentService.getAllByIds(ids).stream()
+                .map(studentMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<StudentDto> getAll() {
+        return studentService.getAllByIds().stream()
+                .map(studentMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
     public StudentDto getById(Long id) throws NotFoundException {
         Student student = studentService.getStudentById(id);
         return studentMapper.toDto(student);
     }
 
-    public List<StudentDto> getAll() {
-        return studentService.getAll().stream()
-                .map(studentMapper::toDto)
-                .collect(Collectors.toList());
-    }
-
     public StudentDto getByEmail(String studentEmail) throws NotFoundException {
         Student student = studentService.getByEmail(studentEmail);
+        return studentMapper.toDto(student);
+    }
+
+    public StudentDto addStudent(StudentDto studentDto) {
+        Student student = studentService.addStudent(studentMapper.fromDtoToModel(studentDto));
         return studentMapper.toDto(student);
     }
 }

@@ -11,6 +11,7 @@ public class DisciplineDto {
 
     private String id;
     private Long code;
+    private String name;
     private String annotation;
     private Integer approvedGroupsAmount;
     private String creditType;
